@@ -1,0 +1,19 @@
+(executable
+ (public_name midori_shibukawa)
+ (name main)
+ (libraries midori_shibukawa dream))
+(rule
+  (target static.ml)
+  (deps (source_tree ./static/))
+  (action
+    (with-stdout-to
+      %{target}
+      (run ocaml-crunch --mode=plain ./static/))))
+(rule
+  (targets templates.ml)
+  (deps templates.eml.html)
+  (action (run dream_eml %{deps} --workspace %{workspace_root})))
+(rule
+  (alias run)
+  (action
+    (run midori_shibukawa args)))

@@ -1,0 +1,14 @@
+let page ~title ~body =
+    <!DOCTYPE lang="en">
+    <html lang="en">
+    <head>
+        <title><%s title %></title>
+        <link rel="stylesheet" href="./static/style.css">
+    </head>
+    <body>
+        <main>
+            <h1><%s title %></h1>
+            <%s! body %>
+        </main>
+    </body>
+    </html>
