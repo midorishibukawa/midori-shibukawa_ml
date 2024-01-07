@@ -10,9 +10,12 @@ homepage: "https://github.com/midorishibukawa/midori-shibukawa_ml"
 doc: "https://url/to/documentation"
 bug-reports: "https://github.com/midorishibukawa/midori-shibukawa_ml/issues"
 depends: [
-  "ocaml"
-  "dune" {>= "3.10"}
+  "batteries"
+  "crunch"
   "dream"
+  "dream-html"
+  "dune" {>= "3.10"}
+  "ocaml"
   "odoc" {with-doc}
 ]
 build: [

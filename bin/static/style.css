@@ -1,3 +1,182 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+:root {
+    --red-val: 10, 75%, 50%; 
+    --orange-val: 30, 83%, 50%;
+    --yellow-val: 47, 90%, 60%;
+    --green-val: 147, 35%, 55%;
+    --blue-val: 205, 67%, 67%;
+
+    --red: hsl(var(--red-val));
+    --orange: hsl(var(--orange-val));
+    --yellow: hsl(var(--yellow-val));
+    --green: hsl(var(--green-val));
+    --blue: hsl(var(--blue-val));
+    --display: 'Archivo Black', sans-serif;
+}
+
+html {
+    height: 100%;
+    color: white;
+    font-family: var(--display);
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+}
+
+section#background {
+    --color-0: var(--red);
+    --color-1: var(--orange);
+    --color-2: var(--yellow);
+    --color-3: var(--green);
+    --color-4: var(--blue);
+    --keyframe: slideInFromTop;
+    --border-radius: 10vw;
+    --length: calc(var(--border-radius) * 2 + 100%);
+    --df: calc(-1 * var(--border-radius));
+    --diff-h: translate(var(--df), 0);
+    --diff-v: translate(0, var(--df));
+    --diff: var(--diff-v);
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: stretch;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    & > * {
+        --easing: ease-in-out;
+        --d: .5s;
+        --duration: var(--d);
+        --slide: 
+            var(--duration) 
+            var(--easing) 
+            var(--keyframe);
+        transform: var(--diff);
+        animation: var(--slide);
+        height: var(--length); 
+        border-radius: var(--border-radius);
+        &:hover {
+            background-color: black !important;
+        }
+    }
+    & > span#bg-color-0 {
+        --duration: calc(var(--d));
+        background-color: var(--color-0);
+    }
+    & > span#bg-color-1 {
+        --duration: calc(var(--d) * 1.5);
+        background-color: var(--color-1);
+    }
+    & > span#bg-color-2 {
+        --duration: calc(var(--d) * 2);
+        background-color: var(--color-2);
+    }
+    & > span#bg-color-3 {
+        --duration: calc(var(--d) * 2.5);
+        background-color: var(--color-3);
+    }
+    & > span#bg-color-4 {
+        --duration: calc(var(--d) * 3);
+        background-color: var(--color-4);
+    }
+}
+
+ul {
+    --fsize: 3vw;
+    grid-column: 1/6;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: subgrid;
+    & > li {
+        display: grid;
+        place-items: end center;
+        font-size: var(--fsize);
+        height: 100%;
+        width: 100%;
+        & > a {
+            padding: var(--fsize);
+        }
+    }
+}
+
 h1 {
-    color: red;
+    position: absolute;
+    display: grid;
+    font-size: 14vw;
+}
+
+@media (orientation: portrait) {
+    section#background{
+        --border-radius: 10vh;
+        --keyframe: slideInFromRight;
+        --diff: var(--diff-h);
+        grid-template-columns: 1fr;
+        & > * {
+            height: 100%;
+            width: var(--length);
+        }
+    }
+
+    ul {
+        --fsize: 3vh;
+        grid-template-columns: 1fr;
+        & li {
+            place-items: center start;
+        }
+    }
+
+    h1 {
+        right: .5rem;
+        writing-mode: sideways-lr;
+        font-size: 14vh;
+    }
+}
+
+@keyframes click {
+  0% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(-10vw);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-10vh);
+  }
 }

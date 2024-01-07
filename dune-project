@@ -19,7 +19,13 @@
  (name midori_shibukawa)
  (synopsis "A short synopsis")
  (description "A longer description")
- (depends ocaml dune dream)
+ (depends 
+   batteries
+   crunch
+   dream
+   dream-html
+   dune 
+   ocaml)
  (tags
   (topics "to describe" your project)))
 
