@@ -3,13 +3,17 @@ module D = Dream
 module T = Templates
 
 let () = 
-    D.run 
+    D.run ~port:8080 ~interface:"0.0.0.0"
     @@ D.logger 
     @@ D.memory_sessions
     @@ D.router [
-
-        D.get "/static/**" @@ D.static "./static";
-
+        D.get "/static/**" 
+            @@ D.static 
+            ~loader:(fun _root path _req -> 
+                match Static.read path with 
+                | None -> Dream.empty `Not_Found 
+                | Some asset -> D.respond asset)
+            "";
         D.get "/" (fun _ -> 
             let open Dream_html in
             let open HTML in

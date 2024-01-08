@@ -67,9 +67,6 @@ section#background {
         animation: var(--slide);
         height: var(--length); 
         border-radius: var(--border-radius);
-        &:hover {
-            background-color: black !important;
-        }
     }
     & > span#bg-color-0 {
         --duration: calc(var(--d));
@@ -109,6 +106,9 @@ ul {
         & > a {
             padding: var(--fsize);
         }
+        &:hover {
+            background-color: black !important;
+        }
     }
 }
 
@@ -139,9 +139,9 @@ h1 {
     }
 
     h1 {
-        right: .5rem;
-        writing-mode: sideways-lr;
+        right: -35vh;
         font-size: 14vh;
+        transform: rotate(270deg);
     }
 }
 

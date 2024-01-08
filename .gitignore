@@ -30,3 +30,6 @@ _opam/
 
 *.bc.js
 .envrc
+
+result/
+midori_shibukawa
